@@ -1,10 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<%--%>
-<%--    HttpSession httpSession = request.getSession();--%>
-<%--    String username = (String) httpSession.getAttribute("username");--%>
-<%--    String role = (String) httpSession.getAttribute("role");--%>
-<%--%>--%>
 <header class="">
     <div class="d-flex m-auto bg-body-secondary d-flex justify-content-center">
         <div class="w-header d-flex justify-content-between">
@@ -13,9 +8,6 @@
                     <div>
                         <a class="link-header" href="/food/listFood"><i class="fa-solid fa-utensils"></i> Food</a>
                     </div>
-<%--                    <div>--%>
-<%--                        <a class="link-header" href="/food/cart"> Cart</a>--%>
-<%--                    </div>--%>
                     <div>
                         <a class="link-header" href="/food/view-statistical"><i class="fa-solid fa-chart-simple"></i>
                             Statistical
@@ -55,14 +47,17 @@
 <%--            </c:if>--%>
 
             <c:if test="${role == 'customer'}">
-                <div>
-                    <a class="link-header" href="/food/view-update-info/${id}"><i class="fa-solid fa-user"></i> Info</a>
+                <div class="d-flex">
+                    <div>
+                        <a class="link-header" href="/food/view-update-info/${id}"><i class="fa-solid fa-user"></i> Info</a>
+                    </div>
+                    <div class="ms-1">
+                        <a class="link-header" href="/food/view-register"><i class="fa-solid fa-registered"></i>
+                            Register
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <a class="link-header" href="/food/view-register"><i class="fa-solid fa-registered"></i>
-                        Register
-                    </a>
-                </div>
+
 
                 <div>
                     <a class="link-header" href="/food/logout"><i class="fa-solid fa-right-to-bracket"></i> Logout</a>

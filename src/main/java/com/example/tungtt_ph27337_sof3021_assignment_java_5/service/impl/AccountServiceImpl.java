@@ -5,10 +5,12 @@ import com.example.tungtt_ph27337_sof3021_assignment_java_5.repository.AccountRe
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.response.LoginResponse;
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountRepository accountRepository;

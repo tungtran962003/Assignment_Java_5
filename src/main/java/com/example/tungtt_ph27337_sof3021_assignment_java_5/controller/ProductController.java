@@ -88,32 +88,11 @@ public class ProductController {
         return "redirect:/food/listFood";
     }
 
-//    private int getIndex(Integer id) {
-//        for (int i = 0; i < listDiscount.size(); i++) {
-//            if (listDiscount.get(i).getId() == id) {
-//                return i;
-//            }
-//        }
-//        return -1;
-//    }
-//    @PostMapping("/upload")
-//    public void upload(@RequestParam(name = "images") MultipartFile file) throws IOException {
-//        StringBuilder fileName = new StringBuilder();
-//        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
-//        fileName.append(file.getOriginalFilename());
-//        Files.write(fileNameAndPath, file.getBytes());
-//    }
-
     @GetMapping("/detailFood/{productid}")
     public String detailProduct(Model model, @PathVariable(name = "productid") Integer productId,
                                 @RequestParam(defaultValue = "1") int page) {
         Product product = productService.detailProduct(productId);
         Page<Product> pageProduct;
-//        for (int i = 0; i < listDiscount.size(); i++) {
-//            if (listDiscount.get(i).getId() == product.getDiscount().getId()) {
-//                return
-//            }
-//        }
         String manufactureDate = sdf.format(product.getManufactureDate());
         model.addAttribute("manufactureDate", manufactureDate);
         model.addAttribute("productDetail", product);
@@ -186,18 +165,6 @@ public class ProductController {
             priceMax = null;
             priceMin = null;
         }
-//        if (productNameSearch == null || productNameSearch.isBlank()) {
-//            pageSearch = iProductService.searchProduct(productNameSearch, priceMin, priceMax, pageable);
-//        } else {
-//            if (priceMin != null or priceMin.compareTo(priceMax) == 1) {
-//
-//                model.addAttribute("pageSearch", pageSearch);
-//            }
-//            pageSearch = iProductService.searchByName(productNameSearch, pageable);
-//        }
-//        pageSearch = productService.searchProduct(productNameSearch, priceMin, priceMax, pageable);
-//        model.addAttribute("pageProduct", pageSearch);
-//        model.addAttribute("pageSearch", pageSearch);
         return "product/product";
     }
 
