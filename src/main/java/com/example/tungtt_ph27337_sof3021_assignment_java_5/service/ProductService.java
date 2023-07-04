@@ -21,7 +21,13 @@ public interface ProductService {
 
     Product detailProduct(Integer productId);
 
+//    List<Product> searchByName(String productName);
+
     Page<Product> getPage(Pageable pageable);
+
+    Page<Product> searchByName(String productName, Pageable pageable);
+
+    Page<Product> searchProduct(String productName, BigDecimal priceMin, BigDecimal priceMax, Pageable pageable);
 
     Optional<Product> findById(Integer productId);
 

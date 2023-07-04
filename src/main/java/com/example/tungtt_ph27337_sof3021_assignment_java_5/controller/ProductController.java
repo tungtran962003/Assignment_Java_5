@@ -2,7 +2,6 @@ package com.example.tungtt_ph27337_sof3021_assignment_java_5.controller;
 
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.entity.Discount;
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.entity.Product;
-import com.example.tungtt_ph27337_sof3021_assignment_java_5.repository.ProductRepository;
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.service.DiscountService;
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +37,11 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+//    @Autowired
+//    private ProductRepository productRepository;
+
     @Autowired
-    private ProductRepository productRepository;
+    private DiscountService discountService;
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -51,6 +53,8 @@ public class ProductController {
         Page<Product> pageProduct;
         Pageable pageable = PageRequest.of(page - 1, 10, Sort.by("productId").descending());
         pageProduct = productService.getPage(pageable);
+        List<Discount> listDiscount = discountService.getAll();
+        model.addAttribute("listDiscount", listDiscount);
         model.addAttribute("pageProduct", pageProduct);
         return "product/product";
     }
@@ -80,24 +84,26 @@ public class ProductController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Discount discount = new Discount();
+        Discount discount = discountService.findById(discountId);
         Product product = new Product
                 (null, productName, quantity, price, origin, manufactureDate, newFileName, 0, new Date() , discount);
         productService.addProduct(product);
         return "redirect:/food/listFood";
     }
 
+
     @GetMapping("/detailFood/{productid}")
     public String detailProduct(Model model, @PathVariable(name = "productid") Integer productId,
                                 @RequestParam(defaultValue = "1") int page) {
         Product product = productService.detailProduct(productId);
         Page<Product> pageProduct;
+        List<Discount> listDiscount = discountService.getAll();
         String manufactureDate = sdf.format(product.getManufactureDate());
         model.addAttribute("manufactureDate", manufactureDate);
         model.addAttribute("productDetail", product);
         Pageable pageable = PageRequest.of(page - 1, 10, Sort.by("productId").descending());
         pageProduct = productService.getPage(pageable);
+        model.addAttribute("listDiscount", listDiscount);
         model.addAttribute("pageProduct", pageProduct);
         return "product/product";
     }
@@ -134,8 +140,8 @@ public class ProductController {
             newFileName = theFileName;
         }
 
-        var p = productRepository.findById(productId).orElse(null);
-        Discount discount = new Discount();
+        var p = productService.findById(productId).orElse(null);
+        Discount discount = discountService.findById(discountId);
         Product product = new Product
                 (productId, productName, quantity, price, origin, manufactureDate, newFileName, p.getQuantity(), p.getCreatedAt(),discount);
         productService.addProduct(product);
@@ -165,6 +171,18 @@ public class ProductController {
             priceMax = null;
             priceMin = null;
         }
+//        if (productNameSearch == null || productNameSearch.isBlank()) {
+//            pageSearch = iProductService.searchProduct(productNameSearch, priceMin, priceMax, pageable);
+//        } else {
+//            if (priceMin != null or priceMin.compareTo(priceMax) == 1) {
+//
+//                model.addAttribute("pageSearch", pageSearch);
+//            }
+//            pageSearch = iProductService.searchByName(productNameSearch, pageable);
+//        }
+        pageSearch = productService.searchProduct(productNameSearch, priceMin, priceMax, pageable);
+        model.addAttribute("pageProduct", pageSearch);
+        model.addAttribute("pageSearch", pageSearch);
         return "product/product";
     }
 

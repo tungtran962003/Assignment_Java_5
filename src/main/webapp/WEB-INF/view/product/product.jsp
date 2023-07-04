@@ -20,7 +20,6 @@
 <div class="container mt-5">
 
     <form id="myForm" enctype="multipart/form-data">
-        <%--        <%= username + " - " + role %>--%>
         <div>
             <div class=" justify-content-center w-100">
                 <div class="w-100 d-flex justify-content-center">
