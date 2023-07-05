@@ -19,4 +19,6 @@ public interface AccountService {
     Optional<Account> findById(Integer id);
 
     List<Account> findAll();
+
+    Optional<Account> findByUsername(String username);
 }

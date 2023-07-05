@@ -41,7 +41,7 @@ VALUES ('TungTT', '123', 'admin', 'tungttph27337@fpt.edu.vn', 'Tung', '094367023
 INSERT INTO Account(Username, Password, Role, Email, Name, Phone, Address) 
 VALUES ('toan', '1', 'admin', 'nanhtrang110397@gmail.com', 'Toan', '0961616592', 'PhuTho');
 INSERT INTO Account(Username, Password, Role, Email, Name, Phone, Address) 
-VALUES ('hihi', '123', 'customer', 'haha@fpt.edu.vn', 'Ha', '02828328236','HaNoi');
+VALUES ('hehe', '123', 'customer', 'hehe@fpt.edu.vn', 'He', '02828328236','HaNoi');
 INSERT INTO Account(Username, Password, Role, Email, Name, Phone, Address) 
 VALUES ('hihi', '123', 'customer', 'tungtran962003@g.com', 'Ha', '02828328236','HaNoi');
 
