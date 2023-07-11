@@ -1,6 +1,7 @@
 package com.example.tungtt_ph27337_sof3021_assignment_java_5.repository;
 
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.entity.Product;
+import com.example.tungtt_ph27337_sof3021_assignment_java_5.rto.SearchProductRto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,12 +24,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "p.price as price," +
             " p.origin as origin," +
             " p.manufactureDate as manufactureDate, " +
-            "p.quantityBuy as quantitybuy, " +
-            "d.name as name " +
+            "p.quantityBuy as quantityBuy, " +
+            "p.image as image " +
             "from Product p " +
-            "inner join Discount d on p.discount.id = d.id" +
             " where 1 = 1 and " +
             " ( p.productName is null or p.productName like %:productName%) " +
             " and  ( (:priceMin is null or :priceMax is null) or p.price between :priceMin and :priceMax) ")
-    Page<Product> searchProduct(String productName, BigDecimal priceMin, BigDecimal priceMax, Pageable pageable);
+    Page<SearchProductRto> searchProduct(String productName, BigDecimal priceMin, BigDecimal priceMax, Pageable pageable);
 }

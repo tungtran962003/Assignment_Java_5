@@ -12,11 +12,6 @@
 </head>
 <body>
 <%@include file="../layout/header.jsp" %>
-<%--<%--%>
-<%--    HttpSession httpSession = request.getSession();--%>
-<%--    String username = (String) httpSession.getAttribute("username");--%>
-<%--    String role = (String) httpSession.getAttribute("role");--%>
-<%--%>--%>
 <div class="container mt-5">
 
     <form id="myForm" enctype="multipart/form-data">
@@ -136,24 +131,7 @@
                             <label class="btn btn-light" for="image">Browse Image</label>
                             <label id="image-text-name">${productDetail.image == null ? 'No file chosen' : productDetail.image}</label>
                         </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between">
-                                <label class="form-label fw-bold">Discount</label>
-                                <div style="color: red"></div>
-                            </div>
-                            <select class="form-select" aria-label="Default select example" name="discountId">
-                                <c:if test="${productDetail.discount.id == null}">
-                                    <c:forEach items="${listDiscount}" var="l">
-                                        <option value="${l.id}">${l.name}</option>
-                                    </c:forEach>
-                                </c:if>
-                                <c:if test="${productDetail.discount.id != null}">
-                                    <c:forEach items="${listDiscount}" var="l">
-                                        <option value="${l.id}" ${productDetail.discount.id==l.id ? 'selected' : ''}>${l.name}</option>
-                                    </c:forEach>
-                                </c:if>
-                            </select>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -191,7 +169,6 @@
                     <th>Manufacture Date</th>
                     <th>Images</th>
                     <th>Quantity Buy</th>
-                    <th>Discount</th>
                     <th>Action</th>
                 </tr>
                 <c:forEach items="${pageProduct.getContent()}" var="product" varStatus="loop">
@@ -206,7 +183,6 @@
                             <img src="http://localhost:27337/food/images/${product.image}" width="70px">
                         </td>
                         <td>${product.quantityBuy}</td>
-                        <td>${product.discount.name}</td>
                         <td class="">
                             <a class="" href="/food/detailFood/${product.productId}"><i
                                     class="fa-solid fa-eye detailDelete"></i></a>
@@ -218,13 +194,6 @@
             </table>
             <div class="d-flex justify-content-center mb-4 mt-5">
                 <div>
-                        <%--                    <c:if test="${pageProduct.getNumber() + 1 > 1}">--%>
-                        <%--                        <a class="text-decoration-none btn btn-outline-info"--%>
-                        <%--                           href="?page=${0}&productNameSearch=${param.productNameSearch}">--%>
-                        <%--                            <i class="fa-solid fa-backward-fast"></i>--%>
-                        <%--                        </a>--%>
-                        <%--                    </c:if>--%>
-
                     <c:if test="${pageProduct.getNumber() + 1 > 1}">
                         <a class="text-decoration-none btn btn-outline-info"
                            href="?page=${pageProduct.getNumber()}&productNameSearch=${param.productNameSearch}
@@ -242,13 +211,6 @@
                             <i class="fa-solid fa-right-long"></i>
                         </a>
                     </c:if>
-
-                        <%--                    <c:if test="${pageProduct.getNumber() + 1 lt pageProduct.getToTalPages()}">--%>
-                        <%--                        <a class="text-decoration-none btn btn-outline-info"--%>
-                        <%--                           href="?page=${pageProduct.getToTalPages()}&productNameSearch=${param.productNameSearch}">--%>
-                        <%--                            <i class="fa-solid fa-forward-fast"></i>--%>
-                        <%--                        </a>--%>
-                        <%--                    </c:if>--%>
                 </div>
             </div>
         </div>

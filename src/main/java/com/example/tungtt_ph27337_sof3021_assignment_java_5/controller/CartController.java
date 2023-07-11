@@ -58,9 +58,6 @@ public class CartController {
     public String addToCart1(@PathVariable Integer id, HttpServletRequest request, Model model) {
         List<ProductInCartResponse> cart = cartService.addToCart(request, id);
         BigDecimal totalMoney = cartService.totalMoney(cart);
-//        model.addAttribute("cart", cart);
-//        model.addAttribute("b", "b");
-//        model.addAttribute("totalMoney", totalMoney);
         return "redirect:/food/detail-food/{id}";
     }
 

@@ -23,11 +23,11 @@
                             Register
                         </a>
                     </div>
-                    <div>
-                        <a class="link-header" href="/food/view-discount"><i class="fa-solid fa-tag"></i>
-                            Discount
-                        </a>
-                    </div>
+<%--                    <div>--%>
+<%--                        <a class="link-header" href="/food/view-discount"><i class="fa-solid fa-tag"></i>--%>
+<%--                            Discount--%>
+<%--                        </a>--%>
+<%--                    </div>--%>
 
                 </div>
 

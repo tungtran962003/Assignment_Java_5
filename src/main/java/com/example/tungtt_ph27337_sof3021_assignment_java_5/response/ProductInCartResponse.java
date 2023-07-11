@@ -1,6 +1,5 @@
 package com.example.tungtt_ph27337_sof3021_assignment_java_5.response;
 
-import com.example.tungtt_ph27337_sof3021_assignment_java_5.entity.Discount;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -29,5 +28,4 @@ public class ProductInCartResponse {
 
     private Integer quantityInCart = 0;
 
-    private Discount discount;
 }

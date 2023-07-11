@@ -84,3 +84,9 @@ INNER JOIN Product p ON p.productId = bd.product_id
 
 
 SELECT * FROM PRODUCT WHERE quantitybuy = 0 and manufacturedate between ('2023-05-19') and ('2023-05-21') ORDER BY manufacturedate ASC
+
+
+
+SELECT * FROM Product p inner join discount d on p.discount_id = d.id
+
+

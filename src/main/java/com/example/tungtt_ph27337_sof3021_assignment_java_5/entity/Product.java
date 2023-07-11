@@ -47,7 +47,4 @@ public class Product {
     @Column(name = "createdAt")
     private Date createdAt;
 
-    @ManyToOne
-    @JoinColumn(name = "discountId", referencedColumnName = "id")
-    private Discount discount;
 }

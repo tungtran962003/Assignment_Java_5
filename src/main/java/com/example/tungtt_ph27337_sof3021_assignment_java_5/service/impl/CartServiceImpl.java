@@ -12,6 +12,7 @@ import com.example.tungtt_ph27337_sof3021_assignment_java_5.repository.ProductRe
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.response.ProductInCartResponse;
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.service.CartService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,8 +44,8 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<ProductInCartResponse> addToCart(HttpServletRequest request, Integer id) {
-        var product = productRepository.findById(id).orElse(null);
-        var cart = getCart(request);
+        Product product = productRepository.findById(id).orElse(null);
+        List<ProductInCartResponse> cart = getCart(request);
         if (product != null) {
             int index = -1;
             for (int i = 0; i < cart.size(); i++) {
@@ -64,7 +65,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<ProductInCartResponse> getCart(HttpServletRequest request) {
-        var session = request.getSession();
+        HttpSession session = request.getSession();
         List<ProductInCartResponse> cartResponseList = (List<ProductInCartResponse>) session.getAttribute("cart");
         if (cartResponseList == null) {
             cartResponseList = new ArrayList<>();
@@ -136,19 +137,19 @@ public class CartServiceImpl implements CartService {
     public void buy(List<ProductInCartResponse> cart, Account account, HttpServletRequest request) {
         // create bill
         Date date = new Date();
-        var bill = Bill.builder().account(account).orderDate(date).build();
-        var billResponse = billRepository.save(bill);
+        Bill bill = Bill.builder().account(account).orderDate(date).build();
+        Bill billResponse = billRepository.save(bill);
 
         // create bill detail
         for (int i = 0; i < cart.size(); i++) {
             BillDetail billDetail = new BillDetail();
             billDetail.setQuantity(cart.get(i).getQuantityInCart());
             billDetail.setBill(billResponse);
-            var product = ProductToProductCart.cartToProduct(cart.get(i));
+            Product product = ProductToProductCart.cartToProduct(cart.get(i));
             billDetail.setProduct(product);
             billDetailRepository.save(billDetail);
             product.setQuantity(product.getQuantity() - cart.get(i).getQuantityInCart());
-            var quantityBuy = product.getQuantityBuy() == null ? Integer.valueOf(0) : product.getQuantityBuy();
+            Integer quantityBuy = product.getQuantityBuy() == null ? Integer.valueOf(0) : product.getQuantityBuy();
             quantityBuy = quantityBuy + cart.get(i).getQuantityInCart();
             product.setQuantityBuy(quantityBuy);
             productRepository.save(product);

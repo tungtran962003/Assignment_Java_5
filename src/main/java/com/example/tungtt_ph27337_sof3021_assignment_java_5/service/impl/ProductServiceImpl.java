@@ -2,6 +2,7 @@ package com.example.tungtt_ph27337_sof3021_assignment_java_5.service.impl;
 
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.entity.Product;
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.repository.ProductRepository;
+import com.example.tungtt_ph27337_sof3021_assignment_java_5.rto.SearchProductRtoToObject;
 import com.example.tungtt_ph27337_sof3021_assignment_java_5.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private SearchProductRtoToObject searchProductRtoToObject;
 
     @Override
     public List<Product> findAll() {
@@ -56,7 +60,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> searchProduct(String productName, BigDecimal priceMin, BigDecimal priceMax, Pageable pageable) {
-        return productRepository.searchProduct(productName, priceMin, priceMax, pageable);
+        return productRepository.searchProduct(productName, priceMin, priceMax, pageable)
+                .map(searchProductRtoToObject::toDto);
     }
 
     @Override
