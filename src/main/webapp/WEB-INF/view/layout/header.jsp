@@ -23,11 +23,11 @@
                             Register
                         </a>
                     </div>
-<%--                    <div>--%>
-<%--                        <a class="link-header" href="/food/view-discount"><i class="fa-solid fa-tag"></i>--%>
-<%--                            Discount--%>
-<%--                        </a>--%>
-<%--                    </div>--%>
+                        <%--                    <div>--%>
+                        <%--                        <a class="link-header" href="/food/view-discount"><i class="fa-solid fa-tag"></i>--%>
+                        <%--                            Discount--%>
+                        <%--                        </a>--%>
+                        <%--                    </div>--%>
 
                 </div>
 
@@ -36,15 +36,15 @@
                 </div>
             </c:if>
 
-<%--            <c:if test="${role == 'staff'}">--%>
-<%--                <div>--%>
-<%--                    <a class="link-header" href="/food/view-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>--%>
-<%--                </div>--%>
+            <%--            <c:if test="${role == 'staff'}">--%>
+            <%--                <div>--%>
+            <%--                    <a class="link-header" href="/food/view-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>--%>
+            <%--                </div>--%>
 
-<%--                <div>--%>
-<%--                    <a class="link-header" href="/food/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>--%>
-<%--                </div>--%>
-<%--            </c:if>--%>
+            <%--                <div>--%>
+            <%--                    <a class="link-header" href="/food/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>--%>
+            <%--                </div>--%>
+            <%--            </c:if>--%>
 
             <c:if test="${role == 'customer'}">
                 <div class="d-flex">
@@ -66,11 +66,12 @@
 
             <c:if test="${role == null}">
                 <div class="d-flex justify-content-between">
-<%--                    <div>--%>
-<%--                        <a class="link-header" href="/food/view-register"><i class="fa-solid fa-registered"></i> Register</a>--%>
-<%--                    </div>--%>
+                        <%--                    <div>--%>
+                        <%--                        <a class="link-header" href="/food/view-register"><i class="fa-solid fa-registered"></i> Register</a>--%>
+                        <%--                    </div>--%>
                     <div>
-                        <a class="link-header" href="/food/view-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                        <a class="link-header" href="/food/view-login"><i class="fa-solid fa-right-to-bracket"></i>
+                            Login</a>
                     </div>
                 </div>
 
@@ -108,59 +109,26 @@
             <div class="d-flex justify-content-center">
                 <a class="header-home" href="/food/home">
                     <button class="border-header-home bg-info">
-<%--                        <a class="" >--%>
-                            <span><i class="fa-solid fa-house-chimney fs-5 me-2" style="color: #000000;"></i></span>
-                            <span class="fw-bold">Home</span>
-<%--                        </a>--%>
+                        <span><i class="fa-solid fa-house-chimney fs-5 me-2" style="color: #000000;"></i></span>
+                        <span class="fw-bold">Home</span>
                     </button>
                 </a>
 
                 <div class="d-flex align-items-center ms-4">
-<%--                    <div>--%>
-<%--                        <a class="text-header-option" href="/food/listFood">--%>
-<%--                            <i class="fa-solid fa-utensils"></i> Food--%>
-<%--                        </a>--%>
-<%--                    </div>--%>
                     <div>
                         <a class="text-header-option" href="/food/cart">
                             <i class="fa-solid fa-cart-shopping"></i> Cart
                         </a>
                     </div>
-<%--                    <div>--%>
-<%--                        <a class="text-header-option" href="/food/view-statistical">--%>
-<%--                            Statistical--%>
-<%--                        </a>--%>
-<%--                    </div>--%>
 
                     <div>
                         <a class="text-header-option" href="/food/bills">
                             <i class="fa-solid fa-file-invoice-dollar"></i> Order
                         </a>
                     </div>
-<%--                    <div>--%>
-<%--                        <a class="text-header-option" href="/chi-tiet-sp/show"></a>--%>
-<%--                    </div>--%>
                 </div>
             </div>
 
-<%--            <div class="border-icon-header bg-dark">--%>
-<%--                <div class="d-flex ms-2 me-2">--%>
-<%--                    <button class="border-0 bg-dark" style="padding-left: 1px; padding-right: 1px;">--%>
-<%--                        <i class="fa-solid fa-heart fw-3 text-info" style="color: #000000;"></i>--%>
-<%--                    </button>--%>
-<%--                    <div class="border-number-icon">--%>
-<%--                        0--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="d-flex ms-2 me-2">--%>
-<%--                    <button class="border-0 bg-dark" style="padding-left: 1px; padding-right: 1px;">--%>
-<%--                        <i class="fa-solid fa-cart-shopping fw-3 text-info" style="color: #000000;"></i>--%>
-<%--                    </button>--%>
-<%--                    <div class="border-number-icon">--%>
-<%--                        0--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
         </div>
     </div>
 

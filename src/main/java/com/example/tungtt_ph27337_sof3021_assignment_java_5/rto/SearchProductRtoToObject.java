@@ -8,19 +8,13 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 public class SearchProductRtoToObject {
     public Product toDto(SearchProductRto rto) {
-        if (rto == null) {
-            return null;
-        }
-
-        Product p = new Product();
-        p.setProductId(rto.getProductId());
-        p.setProductName(rto.getProductName());
-        p.setQuantity(rto.getQuantity());
-        p.setPrice(rto.getPrice());
-        p.setOrigin(rto.getOrigin());
-        p.setManufactureDate(rto.getManufactureDate());
-        p.setQuantityBuy(rto.getQuantityBuy());
-        p.setImage(rto.getImage());
-        return p;
+        return Product.builder().productId(rto.getProductId())
+                .quantityBuy(rto.getQuantityBuy())
+                .productName(rto.getProductName())
+                .manufactureDate(rto.getManufactureDate())
+                .price(rto.getPrice())
+                .image(rto.getImage())
+                .origin(rto.getOrigin())
+                .quantity(rto.getQuantity()).build();
     }
 }

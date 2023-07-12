@@ -147,19 +147,21 @@ public class ProductController {
         Page<Product> pageSearch;
         Pageable pageable = PageRequest.of(page - 1, 10, Sort.by("productId").descending());
         if (priceMax == null) {
-            priceMax = BigDecimal.valueOf(0);
+            priceMax = BigDecimal.valueOf(Integer.MAX_VALUE);
         }
         if (priceMin == null) {
             priceMin = BigDecimal.valueOf(0);
         }
         if (priceMax.intValue() == 0 && priceMin.intValue() == 0) {
-            priceMax = null;
-            priceMin = null;
+            priceMax = BigDecimal.valueOf(Integer.MAX_VALUE);
+//            priceMin = null;
         }
         pageSearch = productService.searchProduct(productNameSearch, priceMin, priceMax, pageable);
         model.addAttribute("pageProduct", pageSearch);
         model.addAttribute("pageSearch", pageSearch);
+
         return "product/product";
+//        return ResponseEntity.ok(pageSearch);
     }
 
     @GetMapping("/")
