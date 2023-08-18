@@ -47,4 +47,7 @@ public class Product {
     @Column(name = "createdAt")
     private Date createdAt;
 
+    @Column(name = "deleted")
+    private Boolean deleted;
+
 }

@@ -42,8 +42,8 @@ public class ProductController {
     @GetMapping("/listFood")
     public String getAllProduct(Model model, @RequestParam(defaultValue = "1") int page) throws InterruptedException {
         Page<Product> pageProduct;
-        Pageable pageable = PageRequest.of(page - 1, 10, Sort.by("productId").descending());
-        pageProduct = productService.getPage(pageable);
+        Pageable pageable = PageRequest.of(page - 1, 5, Sort.by("productId").descending());
+        pageProduct = productService.getAllProduct(pageable);
         model.addAttribute("pageProduct", pageProduct);
         return "product/product";
     }
@@ -55,8 +55,7 @@ public class ProductController {
                              @RequestParam(name = "price") BigDecimal price,
                              @RequestParam(name = "origin") String origin,
                              @RequestParam(name = "manufactureDate") String manufactureDateStr,
-                             @RequestParam(name = "file") MultipartFile file,
-                             @RequestParam(name = "discountId") Integer discountId) {
+                             @RequestParam(name = "file") MultipartFile file) {
         Date manufactureDate;
         try {
             manufactureDate = sdf.parse(manufactureDateStr);
@@ -74,7 +73,7 @@ public class ProductController {
             e.printStackTrace();
         }
         Product product = new Product
-                (null, productName, quantity, price, origin, manufactureDate, newFileName, 0, new Date());
+                (null, productName, quantity, price, origin, manufactureDate, newFileName, 0, new Date(), true);
         productService.addProduct(product);
         return "redirect:/food/listFood";
     }
@@ -102,8 +101,7 @@ public class ProductController {
                                 @RequestParam(name = "origin") String origin,
                                 @RequestParam(name = "manufactureDate") String manufactureDateStr,
                                 @RequestParam(name = "file") MultipartFile file,
-                                @RequestParam(name = "fileName") String theFileName,
-                                @RequestParam(name = "discountId") Integer discountId) {
+                                @RequestParam(name = "fileName") String theFileName) {
         Date manufactureDate;
         try {
             manufactureDate = sdf.parse(manufactureDateStr);
@@ -128,7 +126,7 @@ public class ProductController {
 
         var p = productService.findById(productId).orElse(null);
         Product product = new Product
-                (productId, productName, quantity, price, origin, manufactureDate, newFileName, p.getQuantity(), p.getCreatedAt());
+                (productId, productName, quantity, price, origin, manufactureDate, newFileName, p.getQuantityBuy(), p.getCreatedAt(), true);
         productService.addProduct(product);
         return "redirect:/food/listFood";
     }
@@ -136,6 +134,19 @@ public class ProductController {
     @GetMapping("/deleteFood/{productId}")
     public String deleteProduct(@PathVariable(name = "productId") Integer productId) {
         productService.deleteProduct(productId);
+        return "redirect:/food/listFood";
+    }
+
+    @GetMapping("/delete/{productId}")
+    public String delete(@PathVariable Integer productId) {
+
+        var p = productService.findById(productId).orElse(null);
+        if (p != null) {
+            p.setDeleted(false);
+
+            productService.addProduct(p);
+        }
+
         return "redirect:/food/listFood";
     }
 
@@ -164,12 +175,12 @@ public class ProductController {
 //        return ResponseEntity.ok(pageSearch);
     }
 
-    @GetMapping("/")
-    public String searchByPrice(Model model, @RequestParam(required = false) BigDecimal priceMin,
-                                @RequestParam(required = false) BigDecimal priceMax) {
-
-        return "product/product";
-    }
+//    @GetMapping("/")
+//    public String searchByPrice(Model model, @RequestParam(required = false) BigDecimal priceMin,
+//                                @RequestParam(required = false) BigDecimal priceMax) {
+//
+//        return "product/product";
+//    }
 
     @GetMapping("/images/{fileName}")
     public ResponseEntity<?> getImage(@PathVariable String fileName) throws IOException {

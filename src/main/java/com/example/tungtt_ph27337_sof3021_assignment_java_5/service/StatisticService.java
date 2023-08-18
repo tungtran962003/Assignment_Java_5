@@ -9,4 +9,5 @@ public interface StatisticService {
     List<Product> getTop10BestSelling(Date startDate, Date endDate);
 
     List<Product> getTop10LongestStored(Date startDate, Date endDate);
+
 }

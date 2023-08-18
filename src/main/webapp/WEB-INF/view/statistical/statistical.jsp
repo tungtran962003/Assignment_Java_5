@@ -73,11 +73,11 @@
                                 <input type="date" class="form-control" name="endDate">
                             </div>
 
-                            <div class="d-flex justify-content-center">
-                                <button type="button" onclick="clickFilter()"
-                                        class="btn btn-outline-info align-items-center d-flex justify-content-center"
-                                        style="width: 150px;"><i class="fa-solid fa-filter fs-4"></i></button>
-                            </div>
+<%--                            <div class="d-flex justify-content-center">--%>
+<%--                                <button type="button" onclick="clickFilter()"--%>
+<%--                                        class="btn btn-outline-info align-items-center d-flex justify-content-center"--%>
+<%--                                        style="width: 150px;"><i class="fa-solid fa-filter fs-4"></i></button>--%>
+<%--                            </div>--%>
                         </div>
                     </div>
 

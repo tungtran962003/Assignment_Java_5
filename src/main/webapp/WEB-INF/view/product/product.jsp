@@ -186,7 +186,7 @@
                         <td class="">
                             <a class="" href="/food/detailFood/${product.productId}"><i
                                     class="fa-solid fa-eye detailDelete"></i></a>
-                            <a onclick="return clickDelete()" class="ms-4" href="/food/deleteFood/${product.productId}"><i
+                            <a onclick="return clickDelete()" class="ms-4" href="/food/delete/${product.productId}"><i
                                     class="fa-solid fa-trash detailDelete"></i></a>
                         </td>
                     </tr>

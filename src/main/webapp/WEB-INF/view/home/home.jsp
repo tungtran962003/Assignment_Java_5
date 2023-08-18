@@ -108,8 +108,8 @@
                 <form action="/food/search-name-product" method="get">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <input type="text" class="form-control" width="120px" value="${param.searchName}"
-                                   name="searchName" placeholder="search food name...">
+                            <input type="text" class="form-control" width="120px" value="${param.productNameSearch}"
+                                   name="productNameSearch" placeholder="search food name...">
                         </div>
                         <div>
                             <button type="submit"
@@ -169,7 +169,7 @@
 
                         <c:if test="${pageProduct.getNumber() + 1 > 1}">
                             <a class="text-decoration-none btn btn-outline-info"
-                               href="?page=${pageProduct.getNumber()}&searchName=${param.searchName}">
+                               href="?page=${pageProduct.getNumber()}&productNameSearch=${param.productNameSearch}">
                                 <i class="fa-solid fa-left-long"></i>
                             </a>
                         </c:if>
@@ -178,7 +178,7 @@
 
                         <c:if test="${pageProduct.getNumber() + 1 lt pageProduct.getTotalPages()}">
                             <a class="text-decoration-none btn btn-outline-info"
-                               href="?page=${pageProduct.getNumber() + 2}&searchName=${param.searchName}">
+                               href="?page=${pageProduct.getNumber() + 2}&productNameSearch=${param.productNameSearch}">
                                 <i class="fa-solid fa-right-long"></i>
                             </a>
                         </c:if>

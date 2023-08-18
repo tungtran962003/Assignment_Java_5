@@ -6,6 +6,7 @@ GO
 
 SELECT * FROM Product
 
+delete from product where product_Id = 13
 INSERT INTO Product(Product_Name, Quantity, Price, Origin, Manufacture_Date, Image, quantity_Buy) VALUES (N'Snack', 232, 30000, N'VietNam', '2023-05-20', 'bimbim.png', 4);
 INSERT INTO Product(Product_Name, Quantity, Price, Origin, Manufacture_Date, Image, quantity_Buy) VALUES (N'Okamoto', 222, 30000, N'Korea', '2023-04-14', 'cream.png', 6);
 INSERT INTO Product(Product_Name, Quantity, Price, Origin, Manufacture_Date, Image, quantity_Buy) VALUES (N'Banana Cake', 867, 30000, N'China', '2023-05-20', 'drychicken.png', 7);
@@ -81,7 +82,8 @@ SELECT * FROM Bill b
 INNER JOIN bill_detail bd ON bd.bill_id = b.id
 INNER JOIN Product p ON p.productId = bd.product_id
 
-
+SELECT * FROM Bill WHERE account_id = 1
+ORDER BY order_date DESC
 
 SELECT * FROM PRODUCT WHERE quantitybuy = 0 and manufacturedate between ('2023-05-19') and ('2023-05-21') ORDER BY manufacturedate ASC
 

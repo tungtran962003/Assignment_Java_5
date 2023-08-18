@@ -61,6 +61,23 @@ public class StatisticalController {
         List<Product> list = statisticService.getTop10LongestStored(date1, date2);
         model.addAttribute("listTop10", list);
         model.addAttribute("title", "Top 10 Longest Stored");
+        String date1Str = sdf.format(date1);
+        String date2Str = sdf.format(date2);
+        model.addAttribute("startDate", date1Str);
+        model.addAttribute("endDate", date2Str);
         return "statistical/statistical";
+    }
+
+    @GetMapping("/filter")
+    public String filter(@RequestParam String startDate, @RequestParam String endDate, Model model) throws ParseException {
+        if ("".equals(startDate)) {
+            startDate = "0000-01-01";
+        }
+        Date date1 = sdf.parse(startDate);
+        Date date2 = "".equals(endDate) ? new Date() : sdf.parse(endDate);
+        List<Product> list = statisticService.getTop10LongestStored(date1, date2);
+        model.addAttribute("listTop10", list);
+        model.addAttribute("title", "Products sold");
+        return null;
     }
 }

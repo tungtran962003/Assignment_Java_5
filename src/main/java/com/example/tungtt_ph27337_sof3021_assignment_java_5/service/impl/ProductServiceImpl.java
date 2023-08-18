@@ -53,7 +53,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> getPage(Pageable pageable) {
-        return productRepository.findAll(pageable);
+        return productRepository.findAllByDeleted(Boolean.TRUE, pageable);
+    }
+
+    public Page<Product> getAllProduct(Pageable pageable) {
+        return productRepository.findAllByDeleted(Boolean.TRUE, pageable);
     }
 
     @Override
@@ -67,17 +71,22 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Page<Product> searchNameProduct(String productName, Pageable pageable) {
+        return productRepository.findAllByProductNameContains(productName, pageable);
+    }
+
+    @Override
     public Optional<Product> findById(Integer productId) {
         return productRepository.findById(productId);
     }
 
     @Override
     public Page<Product> findAllDesc(Pageable pageable) {
-        return productRepository.findAllDesc(pageable);
+        return null;
     }
 
     @Override
     public Page<Product> findByProductName(String searchName, Pageable pageable) {
-        return productRepository.findByProductNameContainsOrderByProductIdDesc(searchName, pageable);
+        return productRepository.findAllByDeletedAndProductNameContainsOrderByProductIdDesc(searchName, pageable, true);
     }
 }

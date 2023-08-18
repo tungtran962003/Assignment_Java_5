@@ -21,6 +21,8 @@ public interface ProductService {
 
     Product detailProduct(Integer productId);
 
+    public Page<Product> getAllProduct(Pageable pageable);
+
 //    List<Product> searchByName(String productName);
 
     Page<Product> getPage(Pageable pageable);
@@ -34,4 +36,6 @@ public interface ProductService {
     Page<Product> findAllDesc(Pageable pageable);
 
     Page<Product> findByProductName(String searchName, Pageable pageable);
+
+    Page<Product> searchNameProduct(String productName, Pageable pageable);
 }

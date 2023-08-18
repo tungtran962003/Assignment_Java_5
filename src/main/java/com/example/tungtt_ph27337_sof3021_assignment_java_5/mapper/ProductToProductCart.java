@@ -12,8 +12,10 @@ public class ProductToProductCart {
                 .quantity(product.getQuantity())
                 .price(product.getPrice())
                 .origin(product.getOrigin())
+                .quantityBuy(product.getQuantityBuy())
                 .manufactureDate(product.getManufactureDate())
                 .quantityInCart(1)
+                .deleted(true)
                 .image(product.getImage()).build();
     }
 
@@ -24,6 +26,8 @@ public class ProductToProductCart {
                 .quantity(productInCartResponse.getQuantity())
                 .price(productInCartResponse.getPrice())
                 .origin(productInCartResponse.getOrigin())
+                .deleted(productInCartResponse.getDeleted())
+                .quantityBuy(productInCartResponse.getQuantityBuy())
                 .manufactureDate(productInCartResponse.getManufactureDate())
                 .image(productInCartResponse.getImage()).build();
     }

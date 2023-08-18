@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Optional;
 
@@ -45,5 +46,17 @@ public class HomeController {
         return "home/detail";
     }
 
+    @GetMapping("/search-name-product")
+    public String searchByProductName(Model model, @RequestParam(required = false) String productNameSearch,
+                                      @RequestParam(defaultValue = "1") int page) {
+        Page<Product> pageSearch;
+        Pageable pageable = PageRequest.of(page - 1, 8, Sort.by("productId").descending());
+        pageSearch = productService.searchNameProduct(productNameSearch, pageable);
+        model.addAttribute("pageProduct", pageSearch);
+//        model.addAttribute("pageSearch", pageSearch);
+
+        return "home/home";
+//        return ResponseEntity.ok(pageSearch);
+    }
 
 }

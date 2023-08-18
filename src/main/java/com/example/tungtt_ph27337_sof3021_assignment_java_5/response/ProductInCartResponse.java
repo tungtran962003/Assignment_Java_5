@@ -28,4 +28,8 @@ public class ProductInCartResponse {
 
     private Integer quantityInCart = 0;
 
+    private Boolean deleted = true;
+
+    private Integer quantityBuy;
+
 }
