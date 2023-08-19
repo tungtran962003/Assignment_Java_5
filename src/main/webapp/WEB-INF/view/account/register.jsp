@@ -146,6 +146,13 @@
             return null
         }
     }
+
+    function checkPassword() {
+        var password = document.getElementById('myForm').value
+        if (password.isEmpty()) {
+
+        }
+    }
 </script>
 <script src="https://kit.fontawesome.com/6189a5b91e.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"

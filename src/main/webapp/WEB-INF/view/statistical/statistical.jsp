@@ -91,7 +91,7 @@
                         <div class="px-5 mt-3">
 
                             <div class="mb-3 row">
-                                <label class="col-sm-4 col-form-label">Best selling food</label>
+                                <label class="col-sm-4 col-form-label">Sold food</label>
                                 <div class="col-sm-8">
                                     <button type="button" onclick="clickSelectTop10()"
                                             class="btn btn-outline-info align-items-center d-flex justify-content-center"
@@ -99,7 +99,7 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label class="col-sm-4 col-form-label">Longest stored food</label>
+                                <label class="col-sm-4 col-form-label">Unsold food</label>
                                 <div class="col-sm-8">
                                     <button type="button" onclick="clickLongestTop10()"
                                             class="btn btn-outline-info align-items-center d-flex justify-content-center"

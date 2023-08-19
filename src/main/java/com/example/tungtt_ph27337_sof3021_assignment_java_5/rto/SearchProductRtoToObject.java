@@ -17,4 +17,15 @@ public class SearchProductRtoToObject {
                 .origin(rto.getOrigin())
                 .quantity(rto.getQuantity()).build();
     }
+
+    public Product toDto1(SearchProductRto rto) {
+        return Product.builder().productId(rto.getProductId())
+                .quantityBuy(rto.getQuantity())
+                .productName(rto.getProductName())
+                .manufactureDate(rto.getManufactureDate())
+                .price(rto.getPrice())
+                .image(rto.getImage())
+                .origin(rto.getOrigin())
+                .quantity(rto.getQuantity()).build();
+    }
 }

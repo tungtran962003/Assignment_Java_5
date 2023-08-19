@@ -40,7 +40,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = "select p.productId as productId, " +
             "p.productName as productName, " +
             "p.quantityBuy as quantityBuy, " +
-            "p.quantity as quantity, " +
+            "bd.quantity as quantity, " +
             "p.price as price, " +
             "p.manufactureDate as manufactureDate, " +
             "p.image as image, " +

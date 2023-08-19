@@ -32,7 +32,7 @@ public class StatisticServiceImpl implements StatisticService {
         List<SearchProductRto> bestSellingTop10 = productRepository.getBestSellingTop10(startDate, endDate, PageRequest.of(0, 10));
         List<Product> listProduct = new ArrayList<>();
         for (SearchProductRto top10 : bestSellingTop10) {
-            Product product = searchProductRtoToObject.toDto(top10);
+            Product product = searchProductRtoToObject.toDto1(top10);
             listProduct.add(product);
         }
 //        List<Product> listProduct = bestSellingTop10.stream().map(bestTop10::toDto).collect(Collectors.toList());
