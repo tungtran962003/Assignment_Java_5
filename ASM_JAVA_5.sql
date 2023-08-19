@@ -5,7 +5,7 @@ USE ASM_JAVA_5
 GO
 
 SELECT * FROM Product
-
+SELECT * FROM Product where deleted = 1 order by product_id desc
 delete from product where product_Id = 13
 INSERT INTO Product(Product_Name, Quantity, Price, Origin, Manufacture_Date, Image, quantity_Buy) VALUES (N'Snack', 232, 30000, N'VietNam', '2023-05-20', 'bimbim.png', 4);
 INSERT INTO Product(Product_Name, Quantity, Price, Origin, Manufacture_Date, Image, quantity_Buy) VALUES (N'Okamoto', 222, 30000, N'Korea', '2023-04-14', 'cream.png', 6);

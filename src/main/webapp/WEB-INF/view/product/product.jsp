@@ -221,7 +221,7 @@
 <script>
     function changeImage(e) {
         document.getElementById('image-text-name').innerText = e.split("\\").pop()
-        document.getElementById('image-text-name-input').innerText = e.split("\\").pop()
+        document.getElementById('image-text-name-input').value = ""
     }
     function clickAdd() {
         var add = confirm("Do you want add data?")
@@ -240,6 +240,7 @@
             return alert("Please select a row on the table")
         } else {
             var update = confirm("Do you want to update the data?")
+            debugger
             if (update) {
                 document.getElementById('myForm').action = '/food/updateFood/' + id
                 document.getElementById('myForm').method = 'post'
